@@ -16,7 +16,8 @@ try {
       owner,
       repo,
       workflow_id: core.getInput("workflow_id"),
-      status: "success",
+      status: "completed",
+      conclusion: "success",
       branch: core.getInput("branch"),
       event: "push",
     })
