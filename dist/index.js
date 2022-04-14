@@ -20,7 +20,7 @@ try {
     .then((res) => {
       const workflows = res.data.workflow_runs;
       const lastSuccessRun = workflows.find(run => run.status === 'completed' && run.conclusion === 'success');
-      const commitToTake = lastSuccessRun ?? (workflows.length > 0 ? workflows[workflows.length - 1] : null)
+      const commitToTake = lastSuccessRun ? lastSuccessRun : (workflows.length > 0 ? workflows[workflows.length - 1] : null)
       const lastSuccessCommitHash = commitToTake ? commitToTake.head_commit.id : "";
       core.setOutput("commit_hash", lastSuccessCommitHash);
     })
